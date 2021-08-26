@@ -115,7 +115,7 @@ while True:
       
     except ValueError:
       pass  
-      print("The number you searched was not found in the list\n")
+      print("The number you searched for was not found in the list\n")
   
   elif command == "max":
     if state_clear == True:
