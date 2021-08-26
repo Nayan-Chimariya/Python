@@ -75,7 +75,7 @@ while True:
     print(
       "\n✅ duplicated were removed\n"
       f"previous list = {previous_list}\n"
-      "the new list is\n"
+      "the new list is:\n"
       f"{list}\n"
     )
 
@@ -105,11 +105,17 @@ while True:
 
   elif command == "index":
     chk_index = int(input("\nEnter the value to see the index of: "))
-    found = list.index(chk_index)
-    print(
-      f"\n🔍 Search Result:\n "
-      f"First {chk_index} was found in index [{found}]\n"
-    )
+    
+    try:
+      found = list.index(chk_index)
+      print(
+        f"\n🔍 Search Result:\n "
+        f"First {chk_index} was found in index [{found}]\n"
+      )
+      
+    except ValueError:
+      pass  
+      print("The number you searched was not found in the list\n")
   
   elif command == "max":
     if state_clear == True:
