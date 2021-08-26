@@ -18,7 +18,7 @@ commands:
 
 list = []
 
-state_clear = False
+state_clear = True
 
 while True:
   command = input("> ").lower()
@@ -38,10 +38,16 @@ while True:
     )
 
   elif command == "view":
-    print(f"\nList: {list}\n")
+    if list == []:
+      print(f"\nList: {list}")
+      print('List is empty\n'
+            'use "add" to add values to the list\n')
+    else:
+      print(f"\nList: {list}\n")
   
   elif command == "add":
     value_range = int(input("how many numbers do you want to add: "))
+    state_clear = False
     s = 1 
     while s <= value_range:
       added = int(input(f"| {s} |Enter the value to add to the list: "))
@@ -132,12 +138,21 @@ while True:
       print(f"\nMIN: {min(list)}\n")
 
   elif command == "clear":
-    list.clear()
-    state_clear = True
-    print(
-      "\n✅ List is now cleared\n"
-      f"the new list is {list}\n"
-    )
+    if state_clear == False:
+      print("\n⚠  This will clear the entire list  ⚠\n")
+      authorize = input("Do you wish to proceed (y/n): ").lower()
+      if authorize == "yes" or authorize == "y":
+        list.clear()
+        state_clear = True
+        print(
+          "\n✅ List is now cleared\n"
+          f"the new list is {list}\n"
+        )
+      else:
+        print("\nNO action were performed\n")
+    else:
+      print("\n❗The list is already cleared... NO actions performed\n")
+  
   
   elif command == "exit":
     break
