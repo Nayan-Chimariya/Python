@@ -46,12 +46,12 @@ while True:
       print(f"\nList: {list}\n")
   
   elif command == "add":
-    value_range = int(input("how many numbers do you want to add: "))
+    add_range = int(input("how many numbers do you want to add: "))
     state_clear = False
-    s = 1 
-    while s <= value_range:
-      added = int(input(f"| {s} |Enter the value to add to the list: "))
-      s += 1
+    a = 1 
+    while a <= add_range:
+      added = int(input(f"| {a} | Enter the value to add to the list: "))
+      a += 1
       list.append(added)
 
     print(
@@ -61,8 +61,13 @@ while True:
     )
   
   elif command == "remove":
-    removed = int(input("\nEnter the value to remove from the list: "))
-    list.remove(removed)
+    remove_range = int(input("how many numbers do you want to add: "))
+    r = 1 
+    while r<= remove_range:
+      removed = int(input("\nEnter the value to remove from the list: "))
+      r += 1
+      list.remove(removed)
+
     print(
       "✅ number was removed\n"
       "the new list is\n"
