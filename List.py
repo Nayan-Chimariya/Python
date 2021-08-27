@@ -1,4 +1,5 @@
 # simple list program
+import sys
 
 '''
 
@@ -46,20 +47,31 @@ while True:
       print(f"\nList: {list}\n")
   
   elif command == "add":
-    add_range = int(input("how many numbers do you want to add: "))
-    state_clear = False
-    a = 1 
-    while a <= add_range:
-      added = int(input(f"| {a} | Enter the value to add to the list: "))
-      a += 1
-      list.append(added)
+    try: 
+      add_range = int(input("how many numbers do you want to add: "))
+      state_clear = False
+      a = 1 
+      while a <= add_range:
+        try:
+          added = int(input(f"| {a} | Enter the value to add to the list: "))
+          list.append(added)
+          a += 1
+        
+        except ValueError:
+          pass
+          print("\n ❗ |Invalid Input| : Please enter a valid number\n")
+          
 
-    print(
-      "\n✅ number were added\n"
-      "the new list is\n"
-      f"{list}\n"
-    )
-  
+      print(
+        "\n✅ number were added\n"
+        "the new list is\n"
+        f"{list}\n"
+      )
+    
+    except ValueError:
+      pass
+      print("\n ❗ |Invalid Input| : Please enter a valid number\n")
+   
   elif command == "rm":
     if state_clear == True:
       print("\n❗ The list is empty\n")
