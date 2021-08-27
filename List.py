@@ -61,71 +61,91 @@ while True:
     )
   
   elif command == "remove":
-    remove_range = int(input("how many numbers do you want to remove: "))
-    r = 1 
-    while r<= remove_range:
-      removed = int(input("Enter the value to remove from the list: "))
-      r += 1
-      list.remove(removed)
-      print(
-      "✅ number was removed\n"
-      "the new list is\n"
-      f"{list}\n"
-      )
-
-  elif command == "remove duplicate":
-    unique_list = []
-    previous_list = list.copy()
-    for duplicates in list: 
-      if duplicates not in unique_list:
-        unique_list.append(duplicates)
-    list.clear()
-    list = unique_list
-    
-    print(
-      "\n✅ duplicated were removed\n"
-      f"previous list = {previous_list}\n"
-      "the new list is:\n"
-      f"{list}\n"
-    )
-
-  elif command == "arrange":
-    type_of_arrangement = input(
-      "\nenter\n" 
-      "a for assending\n"
-      "d for descending: "  
-    ).lower()
-
-    if type_of_arrangement == "a":
-      list.sort()
-      print("\n✅ list was sorted in ascending order\n")
-      print(f"{list}\n")
-      continue
-    
-    elif type_of_arrangement == "d":
-      list.sort()
-      list.reverse()
-      print("\n✅ list was sorted in descending order\n")
-      print(f"{list}\n")
+    if state_clear == True:
+      print("\n❗ The list is empty\n")
       continue
 
     else:
-      print("\n❗ Invalid choice\n")
+      remove_range = int(input("how many numbers do you want to remove: "))
+      r = 1 
+      while r<= remove_range:
+        removed = int(input("Enter the value to remove from the list: "))
+        r += 1
+        list.remove(removed)
+        print(
+        "✅ number was removed\n"
+        "the new list is\n"
+        f"{list}\n"
+        )
+
+  elif command == "remove duplicate":
+    if state_clear == True:
+      print("\n❗ The list is empty\n")
       continue
 
-  elif command == "index":
-    chk_index = int(input("\nEnter the value to see the index of: "))
-    
-    try:
-      found = list.index(chk_index)
-      print(
-        f"\n🔍 Search Result:\n "
-        f"First {chk_index} was found in index [{found}]\n"
-      )
+    else:
+      unique_list = []
+      previous_list = list.copy()
+      for duplicates in list: 
+        if duplicates not in unique_list:
+          unique_list.append(duplicates)
+      list.clear()
+      list = unique_list
       
-    except ValueError:
-      pass  
-      print("The number you searched for was not found in the list\n")
+      print(
+        "\n✅ duplicated were removed\n"
+        f"previous list = {previous_list}\n"
+        "the new list is:\n"
+        f"{list}\n"
+      )
+
+  elif command == "arrange":
+    if state_clear == True:
+      print("\n❗ The list is empty\n")
+      continue
+
+    else:
+      type_of_arrangement = input(
+        "\nenter\n" 
+        "a for assending\n"
+        "d for descending: "  
+      ).lower()
+
+      if type_of_arrangement == "a":
+        list.sort()
+        print("\n✅ list was sorted in ascending order\n")
+        print(f"{list}\n")
+        continue
+      
+      elif type_of_arrangement == "d":
+        list.sort()
+        list.reverse()
+        print("\n✅ list was sorted in descending order\n")
+        print(f"{list}\n")
+        continue
+
+      else:
+        print("\n❗ Invalid choice\n")
+        continue
+
+  elif command == "index":
+    if state_clear == True:
+      print("\n❗ The list is empty\n")
+      continue
+
+    else:
+      chk_index = int(input("\nEnter the value to see the index of: "))
+      
+      try:
+        found = list.index(chk_index)
+        print(
+          f"\n🔍 Search Result:\n "
+          f"First {chk_index} was found in index [{found}]\n"
+        )
+        
+      except ValueError:
+        pass  
+        print("The number you searched for was not found in the list\n")
   
   elif command == "max":
     if state_clear == True:
@@ -169,3 +189,4 @@ while True:
       "DO NOT add space after command\n"
       'Type "help" to see my commands list\n'
     )
+    
