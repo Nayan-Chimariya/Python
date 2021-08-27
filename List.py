@@ -74,25 +74,31 @@ while True:
    
   elif command == "rm":
     if state_clear == True:
-      print("\n❗ The list is empty\n")
+      print("\n❗ The list is empty. Use 'add' to input numbers\n")
       continue
 
     else:
       remove_range = int(input("how many numbers do you want to remove: "))
-      r = 1 
-      while r<= remove_range:
-        removed = int(input("Enter the value to remove from the list: "))
-        r += 1
-        list.remove(removed)
-        print(
-        "✅ number was removed\n"
-        "the new list is\n"
-        f"{list}\n"
-        )
+      list_length = len(list)
+      if remove_range > list_length:
+        print("\n ❗ Range is larger than list size\n")
+      
+      else:
+        print(f"\nList: {list}\n")
+        r = 1 
+        while r<= remove_range:
+          removed = int(input(f"| {r} | Enter the value to remove from the list: "))
+          r += 1
+          list.remove(removed)
+          print(
+          "✅ number was removed\n"
+          "the new list is\n"
+          f"{list}\n"
+          )
 
   elif command == "rm duplicate":
     if state_clear == True:
-      print("\n❗ The list is empty\n")
+      print("❗ The list is empty. Use 'add' to input numbers\n")
       continue
 
     else:
@@ -113,7 +119,7 @@ while True:
 
   elif command == "sort":
     if state_clear == True:
-      print("\n❗ The list is empty\n")
+      print("\n❗ The list is empty. Use 'add' to input numbers\n")
       continue
 
     else:
@@ -142,7 +148,7 @@ while True:
 
   elif command == "chk index":
     if state_clear == True:
-      print("\n❗ The list is empty\n")
+      print("\n❗ The list is empty. Use 'add' to input numbers\n")
       continue
 
     else:
@@ -161,14 +167,14 @@ while True:
   
   elif command == "max":
     if state_clear == True:
-      print("\n❗ The list is empty\n")
+      print("\n❗ The list is empty. Use 'add' to input numbers\n")
       continue
     else:
       print(f"\nMAX: {max(list)}\n")
   
   elif command == "min":
     if state_clear == True:
-      print("\n❗ The list is empty\n")
+      print("\n❗ The list is empty. Use 'add' to input numbers\n")
       continue
     else:
       print(f"\nMIN: {min(list)}\n")
