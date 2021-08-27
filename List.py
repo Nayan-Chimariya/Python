@@ -61,18 +61,17 @@ while True:
     )
   
   elif command == "remove":
-    remove_range = int(input("how many numbers do you want to add: "))
+    remove_range = int(input("how many numbers do you want to remove: "))
     r = 1 
     while r<= remove_range:
-      removed = int(input("\nEnter the value to remove from the list: "))
+      removed = int(input("Enter the value to remove from the list: "))
       r += 1
       list.remove(removed)
-
-    print(
+      print(
       "✅ number was removed\n"
       "the new list is\n"
       f"{list}\n"
-    )
+      )
 
   elif command == "remove duplicate":
     unique_list = []
