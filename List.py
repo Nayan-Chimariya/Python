@@ -11,7 +11,7 @@ commands:
 6. min value
 7. clear list
 8. arrange list
-9. revome duplicate items 
+9. remove duplicate items 
 10. exit program
 
 '''
@@ -25,16 +25,16 @@ while True:
   if command == "help":
     print(
       "\nThese are my commands: \n"
-      "1. view - displays the current list\n"
-      "2. add - adds number to the list: \n"
-      "3. remove - removes number from the list\n"
-      "4. check index - returns the index of the number\n"
-      "5. max - returns the max value from the list\n"
-      "6. min - returns the min value from the list\n"
-      "7. clear - clears the list\n"
-      "8. arrange - asks the user for the type of arrangement and does accordingly\n"
-      "9. remove duplicate numbers from list\n"
-      "10. exit - exits the program\n"
+      "view - displays the current list\n"
+      "add - adds number to the list: \n"
+      "rm - removes number from the list\n"
+      "chk index - returns the index of the number\n"
+      "max - returns the max value from the list\n"
+      "min - returns the min value from the list\n"
+      "clr - clears the list\n"
+      "sort - asks the user for the type of arrangement and does accordingly\n"
+      "rm duplicate - duplicate numbers from list\n"
+      "exit - exits the program\n"
     )
 
   elif command == "view":
@@ -60,7 +60,7 @@ while True:
       f"{list}\n"
     )
   
-  elif command == "remove":
+  elif command == "rm":
     if state_clear == True:
       print("\n❗ The list is empty\n")
       continue
@@ -78,7 +78,7 @@ while True:
         f"{list}\n"
         )
 
-  elif command == "remove duplicate":
+  elif command == "rm duplicate":
     if state_clear == True:
       print("\n❗ The list is empty\n")
       continue
@@ -99,7 +99,7 @@ while True:
         f"{list}\n"
       )
 
-  elif command == "arrange":
+  elif command == "sort":
     if state_clear == True:
       print("\n❗ The list is empty\n")
       continue
@@ -128,7 +128,7 @@ while True:
         print("\n❗ Invalid choice\n")
         continue
 
-  elif command == "index":
+  elif command == "chk index":
     if state_clear == True:
       print("\n❗ The list is empty\n")
       continue
@@ -161,7 +161,7 @@ while True:
     else:
       print(f"\nMIN: {min(list)}\n")
 
-  elif command == "clear":
+  elif command == "clr":
     if state_clear == False:
       print("\n⚠  This will clear the entire list  ⚠\n")
       authorize = input("Do you wish to proceed (y/n): ").lower()
@@ -190,4 +190,3 @@ while True:
       'Type "help" to see my commands list\n'
     )
 
-    
