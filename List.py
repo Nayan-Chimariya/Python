@@ -114,6 +114,8 @@ while True:
               pass
               print("\n ❗ |Invalid Input| : Please enter a number from the list\n")
               print(f"List: {list}\n")
+          
+          print(f"\n✅ Successfully removed {remove_range} numbers form the list\n")
 
       except:
         pass
