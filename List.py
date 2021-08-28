@@ -13,6 +13,7 @@ commands:
 7. clear list
 8. arrange list
 9. remove duplicate items 
+10. len
 10. exit program
 
 '''
@@ -33,6 +34,7 @@ while True:
       "max - returns the max value from the list\n"
       "min - returns the min value from the list\n"
       "clr - clears the list\n"
+      "clr - provides the length of list\n"
       "sort - asks the user for the type of arrangement and does accordingly\n"
       "rm duplicate - duplicate numbers from list\n"
       "exit - exits the program\n"
@@ -73,28 +75,49 @@ while True:
       print("\n ❗ |Invalid Input| : Please enter a valid number\n")
    
   elif command == "rm":
-    if state_clear == True:
+
+    if state_clear == True or list == []:
       print("\n❗ The list is empty. Use 'add' to input numbers\n")
       continue
 
     else:
-      remove_range = int(input("how many numbers do you want to remove: "))
-      list_length = len(list)
-      if remove_range > list_length:
-        print("\n ❗ Range is larger than list size\n")
-      
-      else:
-        print(f"\nList: {list}\n")
-        r = 1 
-        while r<= remove_range:
-          removed = int(input(f"| {r} | Enter the value to remove from the list: "))
-          r += 1
-          list.remove(removed)
-          print(
-          "✅ number was removed\n"
-          "the new list is\n"
-          f"{list}\n"
-          )
+      try: 
+        list_length = len(list)
+        print(f"\nMax number you can remove is {list_length}")
+        remove_range = int(input("How many numbers do you want to remove: "))
+        if remove_range > list_length:
+          print("\n ❗ Range is larger than list size\n")
+        
+        else:
+          print(f"\nList: {list}\n")
+          r = 1 
+          while r<= remove_range:
+            try:
+              removed = int(input(f"| {r} | Enter the value to remove from the list: "))
+
+              if removed not in list:
+                r = r
+                print(f"\n❗ {removed} was not found in the list")
+                print("Please input valid value")
+                print(f"List: {list}\n")
+                
+              else:
+                r += 1
+                list.remove(removed)
+                print(
+                "✅ number was removed\n"
+                "the new list is\n"
+                f"{list}\n"
+                )
+            
+            except ValueError:
+              pass
+              print("\n ❗ |Invalid Input| : Please enter a number from the list\n")
+              print(f"List: {list}\n")
+
+      except:
+        pass
+        print("\n ❗ |Invalid Input| : Please enter a valid number\n")
 
   elif command == "rm duplicate":
     if state_clear == True:
@@ -116,6 +139,13 @@ while True:
         "the new list is:\n"
         f"{list}\n"
       )
+
+  elif command == "len":
+    if state_clear == True:
+      print("❗ The list is empty. Use 'add' to input numbers\n")
+
+    else:
+      print(f"\nLength of the list: {len(list)}\n")
 
   elif command == "sort":
     if state_clear == True:
@@ -180,7 +210,7 @@ while True:
       print(f"\nMIN: {min(list)}\n")
 
   elif command == "clr":
-    if state_clear == False:
+    if state_clear == False and list != []:
       print("\n⚠  This will clear the entire list  ⚠\n")
       authorize = input("Do you wish to proceed (y/n): ").lower()
       if authorize == "yes" or authorize == "y":
